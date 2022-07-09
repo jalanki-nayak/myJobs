@@ -1,0 +1,62 @@
+<div class="outer-container">
+     <mat-toolbar class="toolbar">
+       <img src="../../assets/images/MyJobs.png" />
+       <span class="example-spacer"></span>
+       <div class="nameicon" *ngIf="loginUser">
+         <p class="firstletter">{{ loginUser.charAt(0) | uppercase }}</p>
+       </div>
+       <button *ngIf="loginUser" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+         <mat-icon>arrow_drop_down</mat-icon>
+       </button>
+       <mat-menu #menu="matMenu">
+         <button mat-menu-item (click)="onLogout()">
+           <span>Logout</span>
+         </button>
+       </mat-menu>
+     </mat-toolbar>
+     <mat-divider class="divder"></mat-divider>
+     <div class="home">
+       <mat-icon>home</mat-icon>
+       <span style="display: inline">home</span>
+     </div>
+     <h2>Jobs posted by you</h2>
+     <div class="job" *ngIf="postedJobs; else elseblock">
+       <mat-card class="example-card"
+         *ngFor="let job of postedJobs | paginate : {itemsPerPage: 12, currentPage: page, totalItems: totalLength}">
+         <mat-card-title-group>
+           <mat-card-subtitle>{{ job.title }}</mat-card-subtitle>
+         </mat-card-title-group>
+         <mat-card-content>{{ job.description }}</mat-card-content>
+         <mat-card-actions>
+           <div class="actions">
+             <mat-icon style="color: #43afff"> place</mat-icon>
+             <span [title]="job.location"> {{ locationLength(job.location) }}</span>
+           </div>
+           <button mat-raised-button class="view-btn" (click)="viewApplication(job)">
+             View Applications
+           </button>
+         </mat-card-actions>
+       </mat-card>
+     </div>
+     <pagination-controls *ngIf="postedJobs" (pageChange)="page = $event"></pagination-controls>
+     <ng-template #elseblock>
+       <div class="no-job">
+         <img src="../../assets/images/writing.png" />
+         <h3>Your posted jobs will show here!</h3>
+         <button mat-raised-button color="primary" class="start-btn">
+           Post a Job
+         </button>
+       </div>
+     </ng-template>
+     <div class="card" *ngIf="loginModal && loginUser">
+       <mat-card>
+         <mat-card-title>
+           <mat-icon mat-icon-button (click)="loginModal = !loginModal">close</mat-icon>
+         </mat-card-title>
+         <mat-card-content>
+           <p class="logout">Login</p>
+           <p>You have successfully logged in.</p>
+         </mat-card-content>
+       </mat-card>
+     </div>
+   </div>

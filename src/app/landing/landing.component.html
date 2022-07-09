@@ -1,0 +1,71 @@
+<div class="container">
+     <mat-toolbar class="toolbar">
+       <img src="../../assets/images/MyJobs.png" />
+       <span class="example-spacer"></span>
+       <div class="buttons" *ngIf="!loginUser; else elseblock">
+         <span (click)="login()"> Login </span><span>/</span><span>Signup</span>
+       </div>
+       <ng-template #elseblock>
+         <div class="nameicon" *ngIf="loginUser">
+           <p class="firstletter">{{ loginUser.charAt(0) | uppercase }}</p>
+         </div>
+         <button *ngIf="loginUser" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+           <mat-icon>arrow_drop_down</mat-icon>
+         </button>
+         <mat-menu #menu="matMenu">
+           <button mat-menu-item (click)="onLogout()">
+             <span>Logout</span>
+           </button>
+         </mat-menu>
+       </ng-template>
+     </mat-toolbar>
+     <mat-divider class="divder"></mat-divider>
+     <div class="text">
+       <h1>Welcome to</h1>
+       <img src="../../assets/images/MyJobs@2x.png" />
+       <button mat-raised-button color="primary" class="start-btn" routerLink="/dashboard">
+         Get started
+       </button>
+     </div>
+     <div class="example-card">
+       <img class="card-img" mat-card-image src="../../assets/images/img1.png" alt="Photo of a Shiba Inu" />
+     </div>
+     <div class="why-us">
+       <h2>Why Us</h2>
+       <div>
+         <mat-card class="example-cards" *ngFor="let key of whyUs">
+           <mat-card-title-group>
+             <mat-card-title>{{ key.title }}</mat-card-title>
+           </mat-card-title-group>
+           <mat-card-content>{{ key.description }} </mat-card-content>
+         </mat-card>
+       </div>
+     </div>
+     <div class="companies">
+       <h2>Companies Who Trust Us</h2>
+       <div>
+         <img src="../../assets/images/solaytic.png" />
+         <img src="../../assets/images/kanba.png" />
+         <img src="../../assets/images/lighting.png" />
+         <img src="../../assets/images/ztos.png" />
+         <img src="../../assets/images/kanba.png" />
+       </div>
+       <div class="div-2">
+         <img src="../../assets/images/goldline.png" />
+         <img src="../../assets/images/ideaa.png" />
+         <img src="../../assets/images/liva.png" />
+         <img src="../../assets/images/velocity-9.png" />
+       </div>
+     </div>
+   </div>
+   <div class="card" *ngIf="logoutModal && !loginUser && service.logoutUser">
+     <mat-card>
+       <mat-card-title>
+         <mat-icon mat-icon-button (click)="logoutModal = !logoutModal">close</mat-icon>
+       </mat-card-title>
+       <mat-card-content>
+         <p class="logout">Logout</p>
+         <p>You have successfully logged out.</p>
+       </mat-card-content>
+     </mat-card>
+   </div>

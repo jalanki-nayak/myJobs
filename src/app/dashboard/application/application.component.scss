@@ -1,0 +1,80 @@
+.applicants-card {
+     box-shadow: none;
+     border: none;
+   
+     mat-card-title {
+       display: flex;
+       width: 100%;
+       justify-content: space-between;
+   
+       p {
+         color: var(--unnamed-color-303f60);
+         text-align: left;
+         font-family: Helvetica Neue;
+         font-size: 1.2rem;
+         letter-spacing: 0px;
+         color: #303f60;
+         opacity: 1;
+       }
+     }
+   
+     .total {
+       margin-top: 20px;
+       color: var(--unnamed-color-303f60);
+       text-align: left;
+       font: normal normal normal 15px/17px Helvetica Neue;
+       letter-spacing: 0px;
+       color: #303f60;
+       opacity: 1;
+     }
+   
+     .applications {
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: space-between;
+       background: #eeeff2;
+       box-shadow: 0px 30px 36px #557da526;
+       border-radius: 20px;
+       opacity: 1;
+       height: 60vh;
+       padding: 1rem;
+       overflow: auto;
+   
+       .example-card {
+         width: 42%;
+         margin-bottom: 16px;
+   
+         p {
+           color: var(--unnamed-color-303f60);
+           text-align: left;
+           font: normal normal medium 13px/16px Helvetica Neue;
+           letter-spacing: 0px;
+           color: #303f60;
+           opacity: 1;
+         }
+   
+         mat-card-content {
+           p {
+             word-wrap: break-word;
+           }
+         }
+   
+         .example-header-image {
+           background: #d9efff 0% 0% no-repeat padding-box;
+           border-radius: 25px;
+           opacity: 1;
+   
+           .firstletter {
+             margin: auto;
+             color: var(--unnamed-color-303f60);
+             text-align: center;
+             font: normal normal normal 20px/24px Helvetica Neue;
+             letter-spacing: 0px;
+             color: #303f60;
+             opacity: 0.8;
+             margin-top: 20%;
+           }
+         }
+       }
+     }
+   }

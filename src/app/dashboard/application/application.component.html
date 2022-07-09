@@ -1,0 +1,36 @@
+<mat-card class="applicants-card">
+     <mat-card-title>
+       <p>Applicants for this job</p>
+       <mat-icon mat-icon-button style="cursor: pointer" (click)="close()">close</mat-icon>
+     </mat-card-title>
+     <mat-divider></mat-divider>
+     <mat-card-subtitle class="total">Total {{ applicationData.length }} applications</mat-card-subtitle>
+     <mat-card-content class="applications">
+       <ng-container *ngIf="applicationData; else elseblock">
+         <mat-card class="example-card" *ngFor="let application of applicationData">
+           <mat-card-header>
+             <div mat-card-avatar class="example-header-image">
+               <p class="firstletter">
+                 {{ application.name.charAt(0) | uppercase }}
+               </p>
+             </div>
+             <mat-card-title>{{ application.name }}</mat-card-title>
+             <mat-card-subtitle>
+               <p style="word-break: break-all">
+                 {{ application.email }}
+               </p>
+             </mat-card-subtitle>
+           </mat-card-header>
+           <p>Skills</p>
+           <mat-card-content>
+             <p>{{ application.skills }}</p>
+           </mat-card-content>
+         </mat-card>
+       </ng-container>
+       <ng-template #elseblock>
+         <div style="margin-left: auto; margin-right: auto; margin-top: 40%">
+           <img src="../../../assets/images/writing.png" />
+         </div>
+       </ng-template>
+     </mat-card-content>
+   </mat-card>
